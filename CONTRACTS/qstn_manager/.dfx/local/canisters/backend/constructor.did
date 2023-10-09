@@ -1,0 +1,203 @@
+type UserId__1 = principal;
+type UserId = principal;
+type Survey__1 = 
+ record {
+   category: text;
+   cover: Link;
+   description: text;
+   discordLink: Link;
+   fundingType: opt SurveyFundingType;
+   goal: float64;
+   id: SurveyId__1;
+   nftVolume: nat;
+   owner: UserId;
+   rewards: text;
+   status: SurveyStatus__1;
+   story: text;
+   tags: vec text;
+   title: text;
+   twitterLink: Link;
+   walletId: text;
+   wetransferLink: Link;
+ };
+type SurveyWithOwner = 
+ record {
+   owner: Profile__1;
+   survey: Survey__1;
+ };
+type SurveyStatus__1 = 
+ opt variant {
+       approved;
+       fully_funded;
+       live;
+       submitted;
+       whitelist;
+     };
+type SurveyStatus = 
+ opt variant {
+       approved;
+       fully_funded;
+       live;
+       submitted;
+       whitelist;
+     };
+type SurveyState = 
+ variant {
+   closed;
+   live;
+   nosurvey;
+   whitelist: vec principal;
+ };
+type SurveyResultId = text;
+type SurveyResult = 
+ record {
+   claimId: text;
+   id: SurveyResultId;
+   owner: UserId;
+   surveyId: SurveyId__1;
+ };
+type SurveyId__1 = text;
+type SurveyId = text;
+type SurveyFundingType = 
+ opt variant {
+       btc;
+       icp;
+       usd;
+     };
+type Survey = 
+ record {
+   category: text;
+   cover: Link;
+   description: text;
+   discordLink: Link;
+   fundingType: opt SurveyFundingType;
+   goal: float64;
+   id: SurveyId__1;
+   nftVolume: nat;
+   owner: UserId;
+   rewards: text;
+   status: SurveyStatus__1;
+   story: text;
+   tags: vec text;
+   title: text;
+   twitterLink: Link;
+   walletId: text;
+   wetransferLink: Link;
+ };
+type Profile__1 = 
+ record {
+   bio: text;
+   firstName: text;
+   id: UserId;
+   img: Link;
+   lastName: text;
+ };
+type Profile = 
+ record {
+   bio: text;
+   firstName: text;
+   id: UserId;
+   img: Link;
+   lastName: text;
+ };
+type NewSurveyResult = 
+ record {
+   claimId: text;
+   owner: UserId;
+   surveyId: SurveyId__1;
+ };
+type NewSurvey = 
+ record {
+   category: text;
+   cover: Link;
+   description: text;
+   discordLink: Link;
+   fundingType: opt SurveyFundingType;
+   goal: float64;
+   nftVolume: nat;
+   rewards: text;
+   story: text;
+   tags: vec text;
+   title: text;
+   twitterLink: Link;
+   video: opt text;
+   walletId: text;
+   wetransferLink: Link;
+ };
+type NewProfile = 
+ record {
+   bio: text;
+   firstName: text;
+   img: Link;
+   lastName: text;
+ };
+type NFTInfo = 
+ record {
+   canisterId: text;
+   index: nat;
+ };
+type MarketplaceLinks = vec MarketplaceLink;
+type MarketplaceLink = 
+ variant {
+   ccc: Link;
+   entrepot: Link;
+   other: Link;
+ };
+type Link__1 = text;
+type Link = text;
+type GUID = text;
+type Date = text;
+service : {
+  addWhitelist: (SurveyId, vec principal) -> ();
+  adminCreateProfile: (principal, NewProfile) -> ();
+  adminCreateSurvey: (principal, NewSurvey) -> (Survey);
+  approveSurvey: (SurveyId) -> ();
+  archiveSurvey: (SurveyId) -> ();
+  closeSurvey: (SurveyId) -> ();
+  createFirstSurvey: (NewProfile, NewSurvey) -> (Survey);
+  createProfile: (NewProfile) -> ();
+  createSurvey: (NewSurvey) -> (Survey);
+  createSurveyResult: (NewSurveyResult) -> (SurveyResult);
+  deleteSurvey: (SurveyId) -> (opt Survey);
+  getLaunchDate: (SurveyId) -> (opt Date) query;
+  getMarketplaceLinks: (SurveyId) -> (MarketplaceLinks) query;
+  getMyProfile: () -> (Profile) query;
+  getMySurveys: () -> (vec Survey) query;
+  getNFTInfo: (GUID) -> (opt NFTInfo) query;
+  getOwnId: () -> (UserId__1) query;
+  getOwnIdText: () -> (text) query;
+  getProfile: (UserId__1) -> (Profile) query;
+  getSurvey: (SurveyId) -> (Survey) query;
+  getSurveyState: (SurveyId) -> (SurveyState) query;
+  getSurveyVideo: (SurveyId) -> (opt Link__1) query;
+  getSurveyWithOwner: (SurveyId) -> (SurveyWithOwner) query;
+  getSurveyWithOwnerAndMarketplace: (SurveyId) ->
+   (record {
+      marketplaceLinks: MarketplaceLinks;
+      owner: Profile;
+      survey: Survey;
+    }) query;
+  getSurveys: (UserId__1) -> (vec Survey) query;
+  getWhitelist: (SurveyId) -> (vec principal) query;
+  greet: () -> (text);
+  healthcheck: () -> (bool);
+  isAdmin: () -> (bool) query;
+  listSurveys: (vec SurveyStatus, text, vec text) ->
+   (vec SurveyWithOwner) query;
+  makeSurveyLive: (SurveyId) -> ();
+  openSurveyToWhiteList: (SurveyId) -> ();
+  putLaunchDate: (SurveyId, Date) -> ();
+  putNFTGUIDs: (vec record {
+                      GUID;
+                      NFTInfo;
+                    }) -> ();
+  resetWhitelist: (SurveyId) -> ();
+  searchProfiles: (text) -> (vec Profile) query;
+  setMarketplaceLinks: (SurveyId, MarketplaceLinks) -> ();
+  setSurveyFullyFunded: (SurveyId) -> ();
+  unapproveSurvey: (SurveyId) -> ();
+  updateProfile: (Profile) -> ();
+  updateSurvey: (Survey) -> ();
+  updateSurveyStatus: (SurveyId, SurveyStatus) -> ();
+  updateSurveyVideo: (SurveyId, text) -> (SurveyId);
+}

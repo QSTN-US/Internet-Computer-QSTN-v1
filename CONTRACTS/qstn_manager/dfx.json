@@ -1,0 +1,75 @@
+{
+  "canisters": {
+    "whoami": {
+      "main": "src/whoami/main.mo",
+      "type": "motoko",
+      "declarations": {
+        "node_compatibility": true
+      },
+      "pullable": {
+        "dependencies": [],
+        "wasm_url": "https://github.com/krpeacock/auth-client-demo/releases/latest/download/whoami.wasm",
+        "wasm_hash": "a5af74d01aec228c5a717dfb43f773917e1a9138e512431aafcd225ad0001a8b",
+        "init_guide": "null"
+      }
+    },
+    "internet_identity": {
+      "type": "custom",
+      "candid": "https://github.com/dfinity/internet-identity/releases/latest/download/internet_identity.did",
+      "wasm": "https://github.com/dfinity/internet-identity/releases/latest/download/internet_identity_dev.wasm.gz",
+      "remote": {
+        "id": {
+          "ic": "rdmx6-jaaaa-aaaaa-aaadq-cai"
+        }
+      },
+      "frontend": {}
+    },
+    "backend": {
+      "type": "motoko",
+      "declarations": {
+        "output": "ui/declarations/backend"
+      },
+      "dependencies": ["survey_manager"],
+      "main": "src/backend/main.mo"
+    },
+    "frontend": {
+      "declarations": {
+        "output": "ui/declarations/frontend"
+      },
+      "dependencies": ["backend", "survey_manager", "images"],
+      "source": ["out", "src/assets"],
+      "type": "assets"
+    },
+    "survey_manager": {
+      "type": "motoko",
+      "declarations": {
+        "output": "ui/declarations/survey_manager"
+      },
+      "main": "src/survey_manager/main.mo"
+    },
+    "images": {
+      "type": "motoko",
+      "declarations": {
+        "output": "ui/declarations/images"
+      },
+      "main": "src/images/main.mo"
+    }
+  },
+  "defaults": {
+    "build": {
+      "packtool": ""
+    }
+  },
+  "bitcoin": {
+    "enabled": false,
+    "nodes": ["127.0.0.1:18444"]
+  },
+  "dfx": "0.15.0",
+  "version": 1,
+  "networks": {
+    "local": {
+        "bind": "127.0.0.1:8000",
+        "type": "ephemeral"
+    }
+  }
+}

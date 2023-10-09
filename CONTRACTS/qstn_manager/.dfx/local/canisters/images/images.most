@@ -1,0 +1,6 @@
+// Version: 1.0.0
+type Asset = {name : Text; payload : File};
+type File = {ctype : Text; data : [Blob]};
+actor {
+  stable var _assets : [Asset]
+};

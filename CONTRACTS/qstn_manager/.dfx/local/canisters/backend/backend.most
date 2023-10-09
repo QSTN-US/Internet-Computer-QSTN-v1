@@ -1,0 +1,84 @@
+// Version: 1.0.0
+type AssocList<K, V> = List<(K, V)>;
+type AssocList__1<K, V> = AssocList<K, V>;
+type Branch<K, V> = {left : Trie<K, V>; right : Trie<K, V>; size : Nat};
+type Date = Text;
+type GUID = Text;
+type Hash = Nat32;
+type Key<K> = {hash : Hash; key : K};
+type Leaf<K, V> = {keyvals : AssocList__1<Key<K>, V>; size : Nat};
+type Link = Text;
+type Link__2 = Link;
+type List<T> = ?(T, List<T>);
+type MarketplaceLink = {#ccc : Link; #entrepot : Link; #other : Link};
+type MarketplaceLinks = [MarketplaceLink];
+type MarketplaceLinks__1 = MarketplaceLinks;
+type NFTInfo__1 = {canisterId : Text; index : Nat};
+type Profile =
+  {bio : Text; firstName : Text; id : UserId; img : Link; lastName : Text};
+type Profile__3 = Profile;
+type Survey =
+  {
+    category : Text;
+    cover : Link;
+    description : Text;
+    discordLink : Link;
+    fundingType : ?SurveyFundingType;
+    goal : Float;
+    id : SurveyId;
+    nftVolume : Nat;
+    owner : UserId;
+    rewards : Text;
+    status : SurveyStatus;
+    story : Text;
+    tags : [Text];
+    title : Text;
+    twitterLink : Link;
+    walletId : Text;
+    wetransferLink : Link
+  };
+type SurveyFundingType = ?{#btc; #icp; #usd};
+type SurveyId = Text;
+type SurveyId__4 = SurveyId;
+type SurveyResult =
+  {claimId : Text; id : SurveyResultId; owner : UserId; surveyId : SurveyId};
+type SurveyResultId = Text;
+type SurveyResult__2 = SurveyResult;
+type SurveyStatus =
+  ?{#approved; #fully_funded; #live; #submitted; #whitelist};
+type Survey__3 = Survey;
+type Trie<K, V> = {#branch : Branch<K, V>; #empty; #leaf : Leaf<K, V>};
+type UserId = Principal;
+type UserId__3 = UserId;
+actor {
+  stable var launchDates :
+    {
+      #branch : Branch<SurveyId__4, Date>;
+      #empty;
+      #leaf : Leaf<SurveyId__4, Date>
+    };
+  stable var marketplaceLinks :
+    {
+      #branch : Branch<SurveyId__4, MarketplaceLinks__1>;
+      #empty;
+      #leaf : Leaf<SurveyId__4, MarketplaceLinks__1>
+    };
+  stable var nextSurvey : Nat;
+  stable var nftGUIDs :
+    {
+      #branch : Branch<GUID, NFTInfo__1>;
+      #empty;
+      #leaf : Leaf<GUID, NFTInfo__1>
+    };
+  stable var surveyResults : [(SurveyId__4, SurveyResult__2)];
+  stable var surveyVideos : [(SurveyId__4, Link__2)];
+  stable var surveys : [(SurveyId__4, Survey__3)];
+  stable var userSurveys : [(UserId__3, [SurveyId__4])];
+  stable var users : [(UserId__3, Profile__3)];
+  stable var whitelists :
+    {
+      #branch : Branch<SurveyId__4, [Principal]>;
+      #empty;
+      #leaf : Leaf<SurveyId__4, [Principal]>
+    }
+};
