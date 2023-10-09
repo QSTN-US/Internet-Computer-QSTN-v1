@@ -9,8 +9,7 @@
 
 ### Video Demo
 
-[COMING SOON]
-
+https://github.com/QSTN-US/Internet-Computer-QSTN-v1/assets/3760421/c78763b3-2337-4a51-8c8a-cea03d22e89c
 
 ### About Internet Computer Network
 
