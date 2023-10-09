@@ -1,0 +1,41 @@
+{
+  "name": "@qstn/icp",
+  "version": "0.0.0",
+  "private": true,
+  "license": "AGPL-3.0",
+  "main": "index.ts",
+  "scripts": {
+    "lint": "eslint . --ext .ts,.tsx",
+    "lint:fix": "eslint . --fix --ext .ts,.tsx",
+    "prettier": "prettier --check \"**/*.{js,ts,tsx,md}\"  --cache",
+    "prettier:fix": "prettier --write \"**/*.{js,ts,tsx,md}\"  --cache",
+    "typecheck": "tsc --pretty"
+  },
+  "dependencies": {
+    "ic-stoic-identity": "^2.0.0",
+    "lodash": "^4.17.21",
+    "@headlessui/react": "^1.7.15",
+    "@heroicons/react": "v1",
+    "@hookform/resolvers": "^3.1.1",
+    "@qstn/data": "*",
+    "@qstn/lib": "*",
+    "@dfinity/agent": "^0.14.0",
+    "@dfinity/auth-client": "^0.14.0",
+    "@dfinity/authentication": "0.14.0",
+    "@dfinity/candid": "^0.14.0",
+    "@dfinity/identity": "0.14.0",
+    "@dfinity/nns": "^0.6.0",
+    "@dfinity/principal": "^0.14.0",
+    "bignumber.js": "^9.1.1",
+    "clsx": "^1.2.1",
+    "next": "^13.4.9",
+    "react": "^18.2.0",
+    "react-modal-promise": "^1.0.2"
+  },
+  "devDependencies": {
+    "@qstn/config": "*",
+    "@types/node": "^20.4.1",
+    "@types/react": "^18.2.14",
+    "typescript": "^5.1.6"
+  }
+}

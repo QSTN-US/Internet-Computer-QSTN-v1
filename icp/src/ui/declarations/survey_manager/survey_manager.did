@@ -1,0 +1,33 @@
+type definite_canister_settings = 
+ record {
+   compute_allocation: nat;
+   controllers: opt vec principal;
+   freezing_threshold: nat;
+   memory_allocation: nat;
+ };
+type Time = int;
+type SurveyId = nat;
+type NFTInfo = 
+ record {
+   number: nat;
+   priceE8S: nat;
+ };
+type Network = 
+ variant {
+   Mainnet;
+   Regnet;
+   Testnet;
+ };
+type CanisterIdText = text;
+service : {
+  acceptCycles: () -> ();
+  availableCycles: () -> (nat) query;
+  createEscrowCanister: (SurveyId, principal, text, vec NFTInfo, Time, nat, Network, text, nat) -> ();
+  dissociateEscrowCanister: (SurveyId) -> ();
+  getMaxOversellPercentage: () -> (nat) query;
+  getSurveyEscrowCanisterPrincipal: (SurveyId) ->
+   (opt CanisterIdText) query;
+  setMaxOversellPercentage: (nat) -> ();
+  takeover: (text) -> (definite_canister_settings);
+  wallet_receive: () -> ();
+}

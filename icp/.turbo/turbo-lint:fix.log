@@ -1,0 +1,25 @@
+
+> @qstn/icp@0.0.0 lint:fix /home/ubuntu/DEVELOPMENT/qstn-v11/packages/icp
+> eslint . --fix --ext .ts,.tsx
+
+
+/home/ubuntu/DEVELOPMENT/qstn-v11/packages/icp/src/components/select-wallet-modal/index.tsx
+  6:49  warning  'onReject' is defined but never used  @typescript-eslint/no-unused-vars
+
+/home/ubuntu/DEVELOPMENT/qstn-v11/packages/icp/src/context/backend.ts
+  39:7   warning  'NFID_APPLICATION_NAME' is assigned a value but never used      @typescript-eslint/no-unused-vars
+  40:7   warning  'NFID_APPLICATION_LOGO_URL' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  48:3   warning  'children' is defined but never used                            @typescript-eslint/no-unused-vars
+  51:3   warning  'wallets' is defined but never used                             @typescript-eslint/no-unused-vars
+  53:10  warning  '_backend' is assigned a value but never used                   @typescript-eslint/no-unused-vars
+  53:20  warning  'setBackend' is assigned a value but never used                 @typescript-eslint/no-unused-vars
+  54:10  warning  '_backendWithAuth' is assigned a value but never used           @typescript-eslint/no-unused-vars
+  54:28  warning  'setBackendWithAuth' is assigned a value but never used         @typescript-eslint/no-unused-vars
+  57:10  warning  '_nnsIdentity' is assigned a value but never used               @typescript-eslint/no-unused-vars
+  57:24  warning  'setNnsIdentity' is assigned a value but never used             @typescript-eslint/no-unused-vars
+
+/home/ubuntu/DEVELOPMENT/qstn-v11/packages/icp/src/helpers/wallets.ts
+  23:42  warning  'whitelist' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+✖ 12 problems (0 errors, 12 warnings)
+
