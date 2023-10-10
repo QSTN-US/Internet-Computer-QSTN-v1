@@ -7,17 +7,18 @@
 
 ***🚀 QSTN is a platform that connects businesses and individuals through market research surveys. We partner with companies that are looking for feedback from consumers like you, and we provide the opportunity for you to earn rewards while sharing your opinions.***
 
-### Video Demos
+## Video Demos
 
-#### Business funding
+### Business funding
 https://github.com/QSTN-US/Internet-Computer-QSTN-v1/assets/3760421/36af43bf-6ba8-4e02-a6ff-7c2f23e591f6
 
 
-#### User survey and reward claim
+### User survey and reward claim
 
-[COMING SOON]
+https://github.com/QSTN-US/Internet-Computer-QSTN-v1/assets/3760421/c5b6cfe8-ff90-4e7e-a362-08c3be0b697c
 
-#### Creating zero knowledge proof after survey completion
+
+### Creating zero knowledge proof after survey completion
 
 https://github.com/QSTN-US/Internet-Computer-QSTN-v1/assets/3760421/87b92893-0e5a-4e8a-822c-8fcd3bff7a7c
 
